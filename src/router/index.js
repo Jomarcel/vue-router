@@ -1,38 +1,32 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import dashboard from '../views/Dashboard'
+import Vue from "vue";
+import VueRouter from "vue-router";
+import dashboard from "../views/Dashboard";
+import Shipments from "../views/Shipments.vue";
+import Orders from "../views/Orders.vue";
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '',
+    path: "",
     component: dashboard,
     children: [
       {
-        path: '',
-        component: () => import(/* webpackChunkName: "Overview" */ '../views/Overview.vue')
+        path: "",
+        component: Orders,
       },
       {
-        path: 'messages',
-        component: () => import(/* webpackChunkName: "Messages" */ '../views/Messages.vue')
+        path: "Shipments",
+        component: Shipments,
       },
-      {
-        path: 'profile',
-        component: () => import(/* webpackChunkName: "Profile" */ '../views/Profile.vue')
-      },
-      {
-        path: 'settings',
-        component: () => import(/* webpackChunkName: "Settings" */ '../views/Settings.vue')
-      }
-    ]
-  }
-]
+    ],
+  },
+];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;
